@@ -5,77 +5,124 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Books"
         mc:Ignorable="d"
-        Title="MainWindow" Height="750" Width="1100"
-        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
-        TextElement.Foreground="{DynamicResource MaterialDesignBody}"
+        Title="Bücherwurm" Height="750" Width="1100"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes" xmlns:dragablz="http://dragablz.net/winfx/xaml/dragablz"
         TextElement.FontWeight="Regular"
         TextElement.FontSize="13"
         TextOptions.TextFormattingMode="Ideal" 
-        TextOptions.TextRenderingMode="Auto"        
-        Background="{DynamicResource MaterialDesignPaper}"
-        FontFamily="{DynamicResource MaterialDesignFont}">
-    <Grid Margin="0,0,0,-65.5">
-        <StackPanel Orientation="Vertical">
-            <StackPanel Orientation="Horizontal">
-                <Grid>
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="0.33*"></ColumnDefinition>
-                        <ColumnDefinition Width="0.34*"></ColumnDefinition>
-                        <ColumnDefinition Width="0.33*"></ColumnDefinition>
-                    </Grid.ColumnDefinitions>
-                    <materialDesign:Card Grid.Column="0" Grid.Row="0" Padding="0" Margin="16" MaxWidth="334" Width="334">
-                        <Button Click="NavigateToSearch_OnClick">Suche</Button>
-                    </materialDesign:Card>
-                    <materialDesign:Card Grid.Column="1" Grid.Row="0" Padding="0" Margin="16" MaxWidth="334" Width="334">
-                        <Button Click="NavigateToAdd_OnClick">Hinzufügen</Button>
-                    </materialDesign:Card>
-                    <materialDesign:Card Grid.Column="2" Grid.Row="0" Padding="0" Margin="16" MaxWidth="334" Width="334">
-                        <Button Click="NavigateToAdmin_OnClick">Administration</Button>
-                    </materialDesign:Card>
-                </Grid>
-            </StackPanel>
-            <!-- Below: Into Frame or sth like this-->
-            <StackPanel Orientation="Horizontal">
-                <materialDesign:Card Padding="32" Margin="16" MaxWidth="334" Width="334">
-                    <Button Click="AuthorSearch_OnClick">Suche nach Author</Button>
-                </materialDesign:Card>
-                <materialDesign:Card Padding="0" Margin="16" HorizontalAlignment="Left" VerticalAlignment="Center" Width="334" MaxWidth="334" Height="86">
-                    <TextBox BorderThickness="0" GotFocus="AuthorTextbox_GotFocus" VerticalAlignment="Center" HorizontalAlignment="Center" MaxWidth="334" Margin="-25,0" Text="Nachname, Vorname">
-                    </TextBox>
-                </materialDesign:Card>
-            </StackPanel>
-            <StackPanel Orientation="Horizontal">
-                <materialDesign:Card Padding="32" Margin="16" MaxWidth="334" Width="334">
-                    <Button Click="TitelSearch_OnClick">Suche nach Titel</Button>
-                </materialDesign:Card>
-                <materialDesign:Card Padding="0" Margin="16" HorizontalAlignment="Left" VerticalAlignment="Center" Width="334" MaxWidth="334" Height="86">
-                    <TextBox BorderThickness="0" GotFocus="TitelTextbox_GotFocus" VerticalAlignment="Center" HorizontalAlignment="Center" MaxWidth="334" Margin="-25,0" Text="Titel des Buches ohne Untertitel">
-                    </TextBox>
-                </materialDesign:Card>
-            </StackPanel>
-            <StackPanel Orientation="Horizontal">
-                <materialDesign:Card Padding="32" Margin="16" MaxWidth="334" Width="334">
-                    <Button Click="VerlagSearch_OnClick">Suche nach Verlag</Button>
-                </materialDesign:Card>
-                <materialDesign:Card Padding="0" Margin="16" HorizontalAlignment="Left" VerticalAlignment="Center" Width="334" MaxWidth="334" Height="86">
-                    <TextBox BorderThickness="0" GotFocus="VerlagTextbox_GotFocus" VerticalAlignment="Center" HorizontalAlignment="Center" MaxWidth="334" Margin="-25,0" Text="Unter welchem Verlag erschien das Buch?">
-                    </TextBox>
-                </materialDesign:Card>
-            </StackPanel>
-            <StackPanel Orientation="Horizontal">
-                <materialDesign:Card Padding="32" Margin="16" MaxWidth="334" Width="334">
-                    <Button Click="ISBNSearch_OnClick">Suche nach ISBN</Button>
-                </materialDesign:Card>
-                <materialDesign:Card Padding="0" Margin="16" HorizontalAlignment="Left" VerticalAlignment="Center" Width="334" MaxWidth="334" Height="86">
-                    <TextBox BorderThickness="0" GotFocus="ISBNTextbox_GotFocus" VerticalAlignment="Center" HorizontalAlignment="Center" MaxWidth="334" Margin="-25,0" Text="ISBN-Nummer (ISBN-10/-13)">
-                    </TextBox>
-                </materialDesign:Card>
-            </StackPanel>
-            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
-                <materialDesign:Card Padding="32" Margin="16" MaxWidth="334" Width="334">
-                    <Button Click="AllSearch_OnClick">Suche nach allen Kriterien</Button>
-                </materialDesign:Card>
-            </StackPanel>
-        </StackPanel>
-    </Grid>
+        TextOptions.TextRenderingMode="Auto"
+        >
+    <Grid>
+        <dragablz:TabablzControl Margin="8" SelectionChanged="TabablzControl_SelectionChanged" >
+            <dragablz:TabablzControl.InterTabController>
+                <dragablz:InterTabController />
+            </dragablz:TabablzControl.InterTabController >
+            <TabItem Header="Suche" IsSelected="True">
+                <StackPanel>
+                    <StackPanel Orientation="Horizontal">
+                        <materialDesign:Card Padding="32" Margin="16" MaxWidth="334" Width="334">
+                            <Button Click="AuthorSearch_OnClick">Suche nach Author</Button>
+                        </materialDesign:Card>
+                        <materialDesign:Card Padding="0" Margin="16" HorizontalAlignment="Left" VerticalAlignment="Center" Width="334" MaxWidth="334" Height="86">
+                            <TextBox BorderThickness="1" GotFocus="AuthorTextbox_GotFocus"  VerticalAlignment="Center" HorizontalAlignment="Center" MaxWidth="334" Margin="-25,0" TextAlignment="Center" Width="334" Text="Nachname, Vorname">
+                            </TextBox>
+                        </materialDesign:Card>
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal">
+                        <materialDesign:Card Padding="32" Margin="16" MaxWidth="334" Width="334">
+                            <Button Click="TitelSearch_OnClick">Suche nach Titel</Button>
+                        </materialDesign:Card>
+                        <materialDesign:Card Padding="0" Margin="16" HorizontalAlignment="Left" VerticalAlignment="Center" Width="334" MaxWidth="334" Height="86">
+                            <TextBox BorderThickness="1" GotFocus="TitelTextbox_GotFocus" VerticalAlignment="Center" HorizontalAlignment="Center" MaxWidth="334" Margin="-25,0" TextAlignment="Center" Width="334" Text="Titel des Buches ohne Untertitel">
+                            </TextBox>
+                        </materialDesign:Card>
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal">
+                        <materialDesign:Card Padding="32" Margin="16" MaxWidth="334" Width="334">
+                            <Button Click="VerlagSearch_OnClick">Suche nach Verlag</Button>
+                        </materialDesign:Card>
+                        <materialDesign:Card Padding="0" Margin="16" HorizontalAlignment="Left" VerticalAlignment="Center" Width="334" MaxWidth="334" Height="86">
+                            <TextBox BorderThickness="1" GotFocus="VerlagTextbox_GotFocus" VerticalAlignment="Center" HorizontalAlignment="Center" TextAlignment="Center" Width="334" MaxWidth="334" Margin="-25,0" Text="Unter welchem Verlag erschien das Buch?">
+                            </TextBox>
+                        </materialDesign:Card>
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal">
+                        <materialDesign:Card Padding="32" Margin="16" MaxWidth="334" Width="334">
+                            <Button Click="ISBNSearch_OnClick">Suche nach ISBN</Button>
+                        </materialDesign:Card>
+                        <materialDesign:Card Padding="0" Margin="16" HorizontalAlignment="Left" VerticalAlignment="Center" Width="334" MaxWidth="334" Height="86">
+                            <TextBox BorderThickness="1" GotFocus="ISBNTextbox_GotFocus" VerticalAlignment="Center" HorizontalAlignment="Center" TextAlignment="Center" Width="334" MaxWidth="334" Margin="-25,0" Text="ISBN-Nummer (ISBN-10/-13)">
+                            </TextBox>
+                        </materialDesign:Card>
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                        <materialDesign:Card Padding="32" Margin="16" MaxWidth="334" Width="334">
+                            <Button Click="AllSearch_OnClick">Suche nach allen Kriterien</Button>
+                        </materialDesign:Card>
+                    </StackPanel>
+                </StackPanel>
+            </TabItem>
+            <TabItem Header="Hinzufügen">
+                <StackPanel Orientation="Vertical">
+                    <StackPanel Orientation="Horizontal">
+                        <materialDesign:Card Padding="25" Margin="10" MaxWidth="334" Width="334">
+                            <TextBlock>Titel</TextBlock>
+                        </materialDesign:Card>
+                        <materialDesign:Card Padding="0" Margin="10" MaxWidth="334" Width="334">
+                            <TextBox BorderThickness="1" VerticalAlignment="Center" TextAlignment="Center" HorizontalAlignment="Center" Width="300" Text="Bitte Titel eintragen" GotFocus="AddTitelGotFocus"></TextBox>
+                        </materialDesign:Card>
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal">
+                        <materialDesign:Card Padding="25" Margin="10" MaxWidth="334" Width="334">
+                            <TextBlock>Untertitel</TextBlock>
+                        </materialDesign:Card>
+                        <materialDesign:Card Padding="0" Margin="10" MaxWidth="334" Width="334">
+                            <TextBox BorderThickness="1" VerticalAlignment="Center" TextAlignment="Center" HorizontalAlignment="Center" Width="300" Text="Bitte Untertitel eintragen" GotFocus="AddUntertitelGotFocus"></TextBox>
+                        </materialDesign:Card>
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal">
+                        <materialDesign:Card Padding="25" Margin="10" MaxWidth="334" Width="334">
+                            <TextBlock>Reihe</TextBlock>
+                        </materialDesign:Card>
+                        <materialDesign:Card Padding="0" Margin="10" MaxWidth="334" Width="334">
+                            <TextBox BorderThickness="1" VerticalAlignment="Center" TextAlignment="Center" HorizontalAlignment="Center" Width="300" Text="Bitte Titel der Buchreihe eintragen" GotFocus="AddReiheGotFocus"></TextBox>
+                        </materialDesign:Card>
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal">
+                        <materialDesign:Card Padding="25" Margin="10" MaxWidth="334" Width="334">
+                            <TextBlock>Author</TextBlock>
+                        </materialDesign:Card>
+                        <materialDesign:Card Padding="0" Margin="10" MaxWidth="334" Width="334">
+                            <TextBox BorderThickness="1" VerticalAlignment="Center" TextAlignment="Center" HorizontalAlignment="Center" Width="300" Text="Bitte Author eintragen" GotFocus="AddAuthorGotFocus"></TextBox>
+                        </materialDesign:Card>
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal">
+                        <materialDesign:Card Padding="25" Margin="10" MaxWidth="334" Width="334">
+                            <TextBlock>ISBN-10/-13</TextBlock>
+                        </materialDesign:Card>
+                        <materialDesign:Card Padding="0" Margin="10" MaxWidth="334" Width="334">
+                            <TextBox BorderThickness="1" VerticalAlignment="Center" TextAlignment="Center" HorizontalAlignment="Center" Width="300" Text="Bitte ISBN-10/-13 Code eintragen" GotFocus="AddISBNGotFocus"></TextBox>
+                        </materialDesign:Card>
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal">
+                        <materialDesign:Card Padding="20" Margin="10" MaxWidth="334" Width="334">
+                            <TextBlock>Verlag</TextBlock>
+                        </materialDesign:Card>
+                        <materialDesign:Card Padding="0" Margin="10" MaxWidth="334" Width="334">
+                            <TextBox BorderThickness="1" VerticalAlignment="Center" TextAlignment="Center" HorizontalAlignment="Center" Width="300" Text="Bitte Verlag eintragen" GotFocus="AddVerlagGotFocus"></TextBox>
+                        </materialDesign:Card>
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal" >
+                        <TextBlock Padding="20" Margin="10" MaxWidth="426" Width="426"></TextBlock >
+                        <materialDesign:Card Padding="20" Margin="15" MaxWidth="135" Width="135" HorizontalAlignment="Center">
+                            <Button Click="AddSave_OnClick">Buch speichern</Button>
+                        </materialDesign:Card>
+                    </StackPanel>
+                </StackPanel>
+            </TabItem>
+            <TabItem Header="Administration" HorizontalAlignment="Left">
+                <TextBlock>TODO: Popup für AdminKW</TextBlock>
+            </TabItem>
+        </dragablz:TabablzControl>
+    </Grid> 
 </Window>

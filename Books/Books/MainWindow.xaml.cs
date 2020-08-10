@@ -92,5 +92,57 @@ namespace Books
         {
 
         }
+
+        private void AddTitelGotFocus(object sender, RoutedEventArgs e)
+        {
+            TextBox tb = (TextBox)sender;
+            tb.Text = string.Empty;
+            tb.GotFocus -= AddTitelGotFocus;
+        }
+
+        private void AddAuthorGotFocus(object sender, RoutedEventArgs e)
+        {
+            TextBox tb = (TextBox)sender;
+            tb.Text = string.Empty;
+            tb.GotFocus -= AddAuthorGotFocus;
+        }
+
+        private void AddUntertitelGotFocus(object sender, RoutedEventArgs e)
+        {
+            TextBox tb = (TextBox)sender;
+            tb.Text = string.Empty;
+            tb.GotFocus -= AddUntertitelGotFocus;
+        }
+
+        private void AddISBNGotFocus(object sender, RoutedEventArgs e)
+        {
+            TextBox tb = (TextBox)sender;
+            tb.Text = string.Empty;
+            tb.GotFocus -= AddISBNGotFocus;
+        }
+
+        private void AddVerlagGotFocus(object sender, RoutedEventArgs e)
+        {
+            TextBox tb = (TextBox)sender;
+            tb.Text = string.Empty;
+            tb.GotFocus -= AddISBNGotFocus;
+        }
+
+        private void AddReiheGotFocus(object sender, RoutedEventArgs e)
+        {
+            TextBox tb = (TextBox)sender;
+            tb.Text = string.Empty;
+            tb.GotFocus -= AddReiheGotFocus;
+        }
+
+        private void AddSave_OnClick(object sender, RoutedEventArgs e)
+        {
+            //Falls alle Pflichtfelder befüllt sind, Buch in der DB speichern!
+        }
+
+        private void TabablzControl_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+
+        }
     }
 }
